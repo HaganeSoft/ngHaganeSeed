@@ -2,9 +2,6 @@ app.factory('menuItems', function($http, hagane, USER_ROLES) {
 
 	var fileName = {};
 	fileName[USER_ROLES.ADMIN] = 'admin';
-	fileName[USER_ROLES.MEDICO] = 'medico';
-	fileName[USER_ROLES.SUPER_MEDICO] = 'super-medico';
-	fileName[USER_ROLES.CLIENTE] = 'cliente';
 
 	var MenuItems = function() {
 		this.get = function() {

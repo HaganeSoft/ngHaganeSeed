@@ -2,8 +2,6 @@ app.controller('AppCtlr', function($scope, $timeout, $mdSidenav, $log, $location
 	$scope.toggleLeft = buildDelayedToggler('left');
 	$scope.toggleRight = buildToggler('right');
 
-	$scope.server = hagane.getHost();
-
 	$scope.isOpenRight = function() {
 		return $mdSidenav('right').isOpen();
 	};
@@ -13,7 +11,7 @@ app.controller('AppCtlr', function($scope, $timeout, $mdSidenav, $log, $location
 	};
 
 	$scope.loading = null;
-	$scope.toolbar_title = 'MAS Alpha';
+	$scope.toolbar_title = 'ngHgnSeed';
 
 	/**
 	 * Checks the current path and assigns an 'active' class to the

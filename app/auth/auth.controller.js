@@ -1,5 +1,6 @@
 app.controller('AuthCtlr', function ($scope, $rootScope, $state, hagane, HG_AUTH_EVENTS) {
 	$scope.credentials = {};
+	$scope.$parent.loading = null;
 
 	$scope.roleRoutes = {
 		Administrador: 'admin',
