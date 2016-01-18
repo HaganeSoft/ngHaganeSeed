@@ -13,7 +13,7 @@ app.controller('AppCtlr', function($scope, $timeout, $mdSidenav, $log, $location
 	};
 
 	$scope.loading = null;
-	$scope.toolbar_title = 'nghagane';
+	$scope.toolbar_title = 'MAS Alpha';
 
 	/**
 	 * Checks the current path and assigns an 'active' class to the
@@ -51,40 +51,48 @@ app.controller('AppCtlr', function($scope, $timeout, $mdSidenav, $log, $location
 	 */
 	function buildDelayedToggler(navID) {
 		return debounce(function() {
-			$mdSidenav(navID)
-				.toggle()
-				.then(function() {
-					$log.debug('toggle ' + navID + ' is done');
-				});
+			$mdSidenav(navID).toggle().then(function() {
+				$log.debug('toggle ' + navID + ' is done');
+			});
 		}, 200);
 	}
 
 	function buildToggler(navID) {
 		return function() {
-			$mdSidenav(navID)
-				.toggle()
-				.then(function() {
-					$log.debug('toggle ' + navID + ' is done');
-				});
+			$mdSidenav(navID).toggle().then(function() {
+				$log.debug('toggle ' + navID + ' is done');
+			});
 		}
 	}
 })
-.controller('LeftCtrl', ['$location', function($scope, $timeout, $mdSidenav, $log, $location) {
+.controller('LeftCtrl', function($scope, $timeout, $mdSidenav, $log, $location, menuItems, hagane) {
 	$scope.location = $location;
-	$scope.close = function() {
-		$mdSidenav('left').close()
-			.then(function() {
-				$log.debug('close LEFT is done');
-			});
-	};
-}])
-.controller('RightCtrl', function($scope, $timeout, $mdSidenav, $log) {
-	$scope.menuItems;
+
+	function getMenuItems() {
+		menuItems.get().then(function(res) {
+			$scope.menuItems = res.data;
+		}, function(err) {
+			console.log('Server error:');
+			console.log(err);
+		});
+	}
 
 	$scope.close = function() {
-		$mdSidenav('right').close()
-			.then(function() {
-				$log.debug('close RIGHT is done');
-			});
+		$mdSidenav('left').close().then(function() {
+			$log.debug('close LEFT is done');
+		});
+	};
+
+	$scope.$on('auth-login-success', getMenuItems);
+	$scope.$on('auth-logout-success', getMenuItems);
+	$scope.$on('is-authorized', getMenuItems);
+
+	getMenuItems();
+})
+.controller('RightCtrl', function($scope, $timeout, $mdSidenav, $log, $http) {
+	$scope.close = function() {
+		$mdSidenav('right').close().then(function() {
+			$log.debug('close RIGHT is done');
+		});
 	};
 });

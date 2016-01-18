@@ -1,6 +1,10 @@
 app.constant('USER_ROLES', {
-  MEDICO: 'medico',
-  SUPER_MEDICO: 'super-medico',
-  CLIENTE: 'cliente',
-  ADMIN: 'administrador' 
-})
+	MEDICO: 'Medico',
+	SUPER_MEDICO: 'Super_medico',
+	CLIENTE: 'Cliente',
+	ADMIN: 'Administrador',
+	Medico: 'MEDICO',
+	Super_medico: 'SUPER_MEDICO',
+	Cliente: 'CLIENTE',
+	Administrador: 'ADMIN'
+});

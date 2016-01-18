@@ -2,7 +2,7 @@ app.directive('hgMenu', function() {
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: 'app/menu.html',
+    templateUrl: 'app/menu/menu.html',
     scope: {
       items: '=items'
     },

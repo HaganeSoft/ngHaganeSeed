@@ -1,0 +1,23 @@
+<section id="pagecontent" layout="row" flex ng-controller="AdminUserCtlr">
+<div ng-cloak class="slider">
+	<md-content>
+		<md-tabs md-dynamic-height md-border-bottom>
+			<md-tab label="Maestros">
+				<md-content class="md-padding">
+					<md-list>
+						<md-list-item class="md-3-line" ng-repeat="maestro in maestros">
+							<div class="md-list-item-text" layout="column">
+								<h3>{{ maestro.nombre }} {{ maestro.apellido_paterno }} {{ maestro.apellido_materno }}</h3>
+								<h4>{{ maestro.empresa }}</h4>
+								<p>info</p>
+							</div>
+							<md-button class="md-secondary" ng-click="modPymeDialog($event, $index)">Modificar</md-button>
+							<md-divider ></md-divider>
+						</md-list-item>
+					</md-list>
+				</md-content>
+			</md-tab>
+		</md-tabs>
+	</md-content>
+</div>
+</section>
