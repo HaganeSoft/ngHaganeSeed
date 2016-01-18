@@ -25,7 +25,7 @@
 			</div>
 		</md-toolbar>
 		<md-content flex style="padding: 15px;">
-			<div class="loader">
+			<div class="loader" ng-show="loading != null">
 				<md-progress-circular md-mode="{{loading}}"></md-progress-circular>
 			</div>
 			<div ui-view></div>
