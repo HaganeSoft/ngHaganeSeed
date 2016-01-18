@@ -11,7 +11,7 @@ ini_set('display_errors', 1);
 
 
 $HaganeInit = array(
-	'appFolderName' => 'hgn-sisse',
+	'appFolderName' => 'hgn-seed',
 	'appFolderDepth' => '../../'
 );
 

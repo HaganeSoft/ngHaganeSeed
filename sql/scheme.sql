@@ -3,8 +3,8 @@ CREATE TABLE User (
 	username varchar(50) NOT NULL,
 	password varchar(50) NOT NULL,
 	role enum('Administrador') NOT NULL,
-	sessionid varchar(60) DEFAULT NULL,
+	accessToken varchar(60) DEFAULT NULL,
 	PRIMARY KEY (id),
 	UNIQUE KEY username (username),
-	UNIQUE KEY sessionid (sessionid)
+	UNIQUE KEY accessToken (accessToken)
 );

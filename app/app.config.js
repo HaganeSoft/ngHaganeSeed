@@ -7,5 +7,5 @@ app.config(function($mdThemingProvider, $mdIconProvider, haganeProvider) {
 
 	//Hagane API config
 	//$httpProvider.defaults.withCredentials = true;
-	haganeProvider.setHost('http://pisye.hagane.io');
+	haganeProvider.setHost('http://seed.hagane.io');
 });
