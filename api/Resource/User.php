@@ -5,12 +5,13 @@ class User extends AbstractResource{
 	private $sessionidLength = 60;
 
 	function load() {
+		//POST routes----------------------------------------------------------
 		$this->post('/login', function() {
 			$request = json_decode(file_get_contents("php://input"));
 
 			//checar par de pass y user
 			$data = array('username' => $request->username, 'password' => $request->password);
-			$result = $this->db->getRow('SELECT * FROM User WHERE username=:username AND password=:password', $data);
+			$result = $this->db->getRow('SELECT * FROM user WHERE username=:username AND password=:password', $data);
 			if (!empty ( $result )) {
 				$this->message->append('user', array(
 						'accessToken' => $this->generateAccessToken($result['id']),
@@ -30,7 +31,38 @@ class User extends AbstractResource{
 
 			//checar par de pass y user
 			$data = array('accessToken' => $request->accessToken);
-			$result = $this->db->getRow('SELECT * FROM User WHERE accessToken=:accessToken', $data);
+			$result = $this->db->getRow('SELECT * FROM User WHERE access_token=:access_token', $data);
+			if (!empty ( $result )) {
+				$this->message->append('user', array(
+						'id' => $result['id'],
+						'role' => $result['role']
+					)
+				);
+			} else {
+				$this->message->appendError('authorize','access_token inválido.');
+			}
+
+			echo $this->message->send();
+		});
+
+		$this->post('/logout', function() {
+			$request = json_decode(file_get_contents("php://input"));
+
+			$data = array('access_token' => null, 'active_access_token' => $request->accessToken);
+			$this->db->query('UPDATE User SET access_token=:access_token WHERE sessionid=:active_access_token', $data);
+
+			$this->message->append('logout','Successfully logged out');
+
+			echo $this->message->send();
+		});
+
+		//GET routes ----------------------------------------------------------
+		$this->get('/authorize/:accessToken', function() {
+			$accessToken = $this->params['accessToken'];
+
+			//checar par de pass y user
+			$data = array('access_token' => $accessToken);
+			$result = $this->db->getRow('SELECT * FROM User WHERE access_token=:access_token', $data);
 			if (!empty ( $result )) {
 				$this->message->append('user', array(
 						'id' => $result['id'],
@@ -47,14 +79,14 @@ class User extends AbstractResource{
 
 	private function generateAccessToken($userId){
 		$token = $this->getToken($this->sessionidLength);
-		$data = array('accessToken' => $token);
+		$data = array('access_token' => $token);
 
-		while ($this->db->rowCount('SELECT accessToken FROM User WHERE accessToken = :accessToken', $data) > 0) {
-			$data = array('accessToken' => $this->getToken($this->accessTokenLength));
+		while ($this->db->rowCount('SELECT access_token FROM User WHERE access_token = :access_token', $data) > 0) {
+			$data = array('access_token' => $this->getToken($this->accessTokenLength));
 		}
 
 		$data['id'] = $userId;
-		$this->db->query('UPDATE User SET accessToken = :accessToken WHERE id = :id', $data);
+		$this->db->query('UPDATE User SET access_token = :access_token WHERE id = :id', $data);
 		return $token;
 	}
 
