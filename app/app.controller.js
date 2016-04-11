@@ -1,4 +1,9 @@
-app.controller('AppCtlr', function($scope, $timeout, $mdSidenav, $log, $location, hagane) {
+app.controller('AppCtlr', function($scope, $timeout, $mdSidenav, $log, $location, hagane, title) {
+
+	$scope.$on('titleChange', function() {
+	    $scope.toolbar_title = title.title();
+	});
+
 	$scope.toggleLeft = buildDelayedToggler('left');
 	$scope.toggleRight = buildToggler('right');
 
