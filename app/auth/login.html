@@ -1,13 +1,16 @@
-<form ng-submit="login()" layout="column" layout-align="start center">
-	<md-input-container flex>
-		<md-icon md-font-set="material-icons">account_circle</md-icon>
-		<input ng-model="credentials.username" type="text" placeholder="User" ng-required="true">
-	</md-input-container>
-	<md-input-container flex>
-		<md-icon md-font-set="material-icons">lock</md-icon>
-		<input ng-model="credentials.password" type="password" placeholder="Password" ng-required="true">
-	</md-input-container>
-	<md-input-container flex>
-		<md-button type="submit">Entrar</md-button>
-	</md-input-container>
-</form>
+<md-content layout-padding class="md-whiteframe-z2 main-container-60">
+	<form ng-submit="login()" flex layout="column" layout-align="start center">
+		<h1 class="md-headline">Iniciar Sesión</h1>
+		<md-input-container flex>
+			<md-icon md-font-set="material-icons">account_circle</md-icon>
+			<input ng-model="credentials.username" type="text" placeholder="User" ng-required="true">
+		</md-input-container>
+		<md-input-container flex>
+			<md-icon md-font-set="material-icons">lock</md-icon>
+			<input ng-model="credentials.password" type="password" placeholder="Password" ng-required="true">
+		</md-input-container>
+		<md-input-container flex>
+			<md-button class="md-raised md-primary" type="submit">Entrar</md-button>
+		</md-input-container>
+	</form>
+</md-content>

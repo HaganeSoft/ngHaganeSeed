@@ -1,6 +1,6 @@
 {
   "name": "ngHaganeSeed",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "seed for hagane front master race",
   "main": "index.js",
   "dependencies": {

@@ -1,9 +1,11 @@
 app.config(function($mdThemingProvider, $mdIconProvider, haganeProvider) {
 	$mdThemingProvider.theme('default')
-	.primaryPalette('orange', {
-		'default': '900'
+	.primaryPalette('red', {
+		'default': '500'
 	})
-	.accentPalette('deep-orange');
+	.accentPalette('cyan', {
+		'default': 'A200'
+	});
 
 	//Hagane API config
 	//$httpProvider.defaults.withCredentials = true;

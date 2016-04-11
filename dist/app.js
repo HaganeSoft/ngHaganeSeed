@@ -2,10 +2,12 @@ var app = angular.module('hgapp', ['ngHagane', 'ui.router', 'ngMaterial']);
 
 app.config(function($mdThemingProvider, $mdIconProvider, haganeProvider) {
 	$mdThemingProvider.theme('default')
-	.primaryPalette('orange', {
-		'default': '900'
+	.primaryPalette('red', {
+		'default': '500'
 	})
-	.accentPalette('deep-orange');
+	.accentPalette('cyan', {
+		'default': 'A200'
+	});
 
 	//Hagane API config
 	//$httpProvider.defaults.withCredentials = true;
@@ -27,6 +29,11 @@ app.controller('AppCtlr', function($scope, $timeout, $mdSidenav, $log, $location
 	$scope.go = function(path) {
 		$location.path(path);
 	};
+
+	$scope.openMenu = function($mdOpenMenu, ev) {
+      originatorEv = ev;
+      $mdOpenMenu(ev);
+    };
 
 	$scope.loading = null;
 	$scope.toolbar_title = 'ngHgnSeed';
@@ -67,17 +74,13 @@ app.controller('AppCtlr', function($scope, $timeout, $mdSidenav, $log, $location
 	 */
 	function buildDelayedToggler(navID) {
 		return debounce(function() {
-			$mdSidenav(navID).toggle().then(function() {
-				$log.debug('toggle ' + navID + ' is done');
-			});
+			$mdSidenav(navID).toggle()
 		}, 200);
 	}
 
 	function buildToggler(navID) {
 		return function() {
-			$mdSidenav(navID).toggle().then(function() {
-				$log.debug('toggle ' + navID + ' is done');
-			});
+			$mdSidenav(navID).toggle()
 		}
 	}
 })
@@ -94,9 +97,7 @@ app.controller('AppCtlr', function($scope, $timeout, $mdSidenav, $log, $location
 	}
 
 	$scope.close = function() {
-		$mdSidenav('left').close().then(function() {
-			$log.debug('close LEFT is done');
-		});
+		$mdSidenav('left').close()
 	};
 
 	$scope.$on('auth-login-success', getMenuItems);
@@ -105,13 +106,6 @@ app.controller('AppCtlr', function($scope, $timeout, $mdSidenav, $log, $location
 
 	getMenuItems();
 })
-.controller('RightCtrl', function($scope, $timeout, $mdSidenav, $log, $http) {
-	$scope.close = function() {
-		$mdSidenav('right').close().then(function() {
-			$log.debug('close RIGHT is done');
-		});
-	};
-});
 
 app.directive('hgApp', function() {
 	return {

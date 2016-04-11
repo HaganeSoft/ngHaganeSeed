@@ -1,0 +1,122 @@
+
+/**
+ *
+ * CSS Material Stylesheet
+ * Created by: Ruben Aguirre
+ * Hagane Software
+ *
+ */
+
+.main-background {
+    background-color: #DDD;
+}
+
+/* Use these containers within your partials to give it the proper width */
+.main-container-30,
+.main-container-40,
+.main-container-50,
+.main-container-60,
+.main-container-70,
+.main-container-80,
+.main-container-90,
+.main-container-100 {
+    margin: 16px;
+    z-index: 2;
+}
+
+.main-container-30 {
+    width: 30%;
+}
+.main-container-40 {
+    width: 40%;
+}
+.main-container-50 {
+    width: 50%;
+}
+.main-container-60 {
+    width: 60%;
+}
+.main-container-70 {
+    width: 70%;
+}
+.main-container-80 {
+    width: 80%;
+}
+.main-container-90 {
+    width: 90%;
+}
+.main-container-100 {
+    width: 100%;
+}
+
+/*Mobile breakpoints*/
+@media (max-width: 960px) {
+    .main-background {
+        padding: 0;
+        background-color: #FFF;
+        width: 100%;
+        height: 100%;
+    }
+
+    .main-container-30,
+    .main-container-40,
+    .main-container-50,
+    .main-container-60,
+    .main-container-70,
+    .main-container-80,
+    .main-container-90,
+    .main-container-100 {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1;
+    }
+}
+
+/* SIDENAV STYLES */
+#sidebar md-sidenav .md-button{
+    margin: 0;
+}
+#sidebar md-sidenav md-toolbar h1{
+    margin-left: 56px;
+    padding-left: 0;
+}
+#sidebar md-sidenav md-list-item md-icon{
+    margin: 16px 16px 16px 0;
+}
+
+/* MAIN TOOLBAR STYLES */
+.toolbar-primary{
+    height: 128px;
+    min-height: 128px;
+    max-height: 128px;
+}
+.toolbar-overlap{
+    margin-top: -144px;
+    padding-top: 79px;
+}
+
+@media only screen and (max-width: 959px) and (min-width: 0) and (orientation: portrait){
+    .toolbar-primary{
+        height: 56px;
+        min-height: 56px;
+        max-height: 56px;
+    }
+    .toolbar-overlap{
+        margin-top: 0;
+        padding-top: 0;
+    }
+}
+@media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape){
+    .toolbar-primary{
+        height: 48px;
+        min-height: 48px;
+        max-height: 48px;
+        margin-bottom: 0;
+    }
+    .toolbar-overlap{
+        margin-top: 0;
+        padding-top: 0;
+    }
+}

@@ -1,51 +1,34 @@
 <md-content layout="row" flex id="sidebar">
-<div id="version">ver 0.0.1</div>
-	<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-		<md-toolbar class="md-primary">
-			<h1 class="md-toolbar-tools">HaganeApp</h1>
+<div id="version">ver 0.0.2</div>
+	<md-sidenav class="md-sidenav-left main-background" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+		<md-toolbar class="md-primary toolbar-primary">
+			<span flex></span>
+			<h1 hide-gt-sm class="md-toolbar-tools md-toolbar-tools-bottom md-title">Project Name</h1>
+			<h1 hide-xs hide-sm class="md-toolbar-tools md-toolbar-tools-bottom md-title">{{toolbar_title}}</h1>
 		</md-toolbar>
-		<md-content layout-padding ng-controller="LeftCtrl" layout="column">
+		<div ng-controller="LeftCtrl" layout="column">
 			<div ng-if="isLogged">
 				<img class="img-sidebar" ng-src="user.photo">
 				<p>Bienvenido {{user.title}} {{user.name}}</p>
 			</div>
 			<hg-menu items="menuItems"></hg-menu>
-		</md-content>
+		</div>
 	</md-sidenav>
 	<md-content layout="column" flex id="mainPanel">
-		<md-toolbar>
+		<md-toolbar class="toolbar-primary">
 			<div class="md-toolbar-tools">
 				<md-button ng-click="toggleLeft()" hide-gt-sm class="md-icon-button">
 					<md-icon md-font-set="material-icons">menu</md-icon>
 				</md-button>
-				<h2>{{toolbar_title}}</h2>
+				<h2 hide-gt-sm class="md-title">{{toolbar_title}}</h2>
 				<span flex></span>
-				<md-button class="md-icon-button" aria-label="Contextual" ng-click="toggleRight()" ng-hide="isOpenRight()">
-					<md-icon md-font-set="material-icons">more_vert</md-icon>
-				</md-button>
 			</div>
 		</md-toolbar>
-		<md-content flex style="padding: 15px;">
+		<md-content class="main-background toolbar-overlap" flex layout="row" layout-align="center start">
 			<div class="loader" ng-show="loading != null">
 				<md-progress-circular md-mode="{{loading}}"></md-progress-circular>
 			</div>
-			<div ui-view></div>
+			<div class="main-ui-view" ui-view flex layout="row" layout-align="start start"></div>
 		</md-content>
 	</md-content>
-	<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-		<md-toolbar class="md-theme-light">
-			<h1 class="md-toolbar-tools">Menu contextual</h1>
-		</md-toolbar>
-		<md-content ng-controller="RightCtrl" layout-padding>
-			<form>
-				<md-input-container>
-					<label for="testInput">Test input</label>
-					<input type="text" id="testInput" ng-model="data" md-autofocus>
-				</md-input-container>
-			</form>
-			<md-button ng-click="close()" class="md-primary">
-				Close Sidenav Right
-			</md-button>
-		</md-content>
-	</md-sidenav>
 </md-content>

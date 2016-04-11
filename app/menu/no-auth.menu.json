@@ -1,3 +1,3 @@
 [
-  {"name": "login", "route": "login"}
+  {"name": "Iniciar Sesión", "route": "login", "iconFontSet": null, "icon": "lock_open"}
 ]
