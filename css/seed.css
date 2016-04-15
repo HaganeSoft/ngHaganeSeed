@@ -7,8 +7,13 @@
  *
  */
 
+/* Various styles */
 .main-background {
     background-color: #DDD;
+}
+md-icon.md-avatar-icon {
+    background: rgba(0, 0, 0, 0.38);
+    color: rgb(250, 250, 250);
 }
 
 /* Use these containers within your partials to give it the proper width */
@@ -118,5 +123,19 @@
     .toolbar-overlap{
         margin-top: 0;
         padding-top: 0;
+    }
+}
+
+/* FAB STYLES */
+.fab-toolbar-overlap {
+    margin-top: 36px;
+}
+@media (max-width: 960px){
+    .fab-toolbar-overlap {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        margin-right: 16px;
+        margin-bottom: 16px;
     }
 }
