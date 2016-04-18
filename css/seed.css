@@ -10,6 +10,7 @@
 /* Various styles */
 .main-background {
     background-color: #DDD;
+    overflow-x: hidden;
 }
 md-icon.md-avatar-icon {
     background: rgba(0, 0, 0, 0.38);
