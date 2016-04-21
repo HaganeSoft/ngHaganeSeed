@@ -28,6 +28,7 @@ md-icon.md-avatar-icon {
 .main-container-100 {
     margin: 16px;
     z-index: 2;
+    background-color: #FFF;
 }
 
 .main-container-30 {
