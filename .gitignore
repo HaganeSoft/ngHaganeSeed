@@ -1,2 +1,11 @@
-node_modules/*
-dist/*
+.DS_Store
+app/config/config.php
+/.htaccess
+error_log
+lib/
+node_modules
+bower_components
+old/*
+dist/
+.vagrant
+.*.swp

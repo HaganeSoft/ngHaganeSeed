@@ -1,13 +1,20 @@
-app.directive('hgMenu', function() {
+angular.module('hgapp').directive('hgMenu', function() {
   return {
     restrict: 'E',
     replace: true,
     templateUrl: 'app/menu/menu.html',
     scope: {
-      items: '=items'
+      items: '='
     },
-    controller: function($scope) {
-      $scope.activeItem = 0;
-    }
+    controller: ['$scope', '$mdSidenav', '$state', function($scope, $mdSidenav, $state) {
+			$scope.isActive = function(item) {
+				return item.route == $state.current.name;
+			};
+
+			$scope.navigate = function(loc) {
+				$mdSidenav('left').toggle();
+				$state.go(loc);
+			};
+    }]
   }
 });
